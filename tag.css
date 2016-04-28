@@ -1,0 +1,26 @@
+.tag{
+	position: absolute;
+	border-style: solid;
+	border-color: rgba(255, 0, 0, 0.7);
+	width: 10px;
+    height: 10px;
+    
+
+}
+
+.tag:hover{
+	border-color: rgba(255, 0, 0, 1);
+	cursor: pointer;
+}
+
+.wrapper{
+	position: relative;
+	/*border-style: dotted;*/
+	margin: 40px;
+}
+
+.canvas{
+	
+	cursor: crosshair;
+
+}
