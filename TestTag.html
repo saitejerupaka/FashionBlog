@@ -43,7 +43,7 @@ $(document).ready(function(){
     	var wrapper = $('#imageWrapper').html();
     	var style = 'top:' +  (Y-5) +'px;left:'  + (X-5) + 'px';
     	var tagCount = count++;
-    	var addTag = "<div id='tag" + tagCount +"' class='tag' style="+ style +  ">	</div>";
+    	var addTag = "<div id='tag" + tagCount +"' class='tag' style="+ style +  "> "+ tagCount+"	</div>";
     	$('#imageWrapper').append(addTag);
     }
       
