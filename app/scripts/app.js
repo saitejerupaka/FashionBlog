@@ -17,13 +17,17 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/',{
+        templateUrl:'views/photoList.html',
+        controller:'photoListCtrl'
+      })
+      .when('/editImage', {
         templateUrl: 'views/editImageTags.html',
         controller: 'editImageTagsCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/main', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
       })
       .otherwise({
         redirectTo: '/'

@@ -8,11 +8,14 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/justifiedGallery/dist/css/justifiedGallery.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/tag.css">
+    <link rel="stylesheet" href="styles/photoList.css">
     <!-- endbuild -->
   </head>
   <body ng-app="fashionBlogApp">
@@ -40,8 +43,8 @@
 
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li><a ng-href="#/main">Main</a></li>
+              <li><a ng-href="#/editImage">EditImage</a></li>
             </ul>
           </div>
         </div>
@@ -79,16 +82,21 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/justifiedGallery/dist/js/jquery.justifiedGallery.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/directives/justifiedDir.js"></script>
+        <script src="scripts/directives/repeatDoneDir.js"></script>
         <script src="scripts/directives/originalImageDir.js"></script>
+        <script src="scripts/services/dataFactory.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         
         <script src="scripts/controllers/editImageTagsCtrl.js"></script>
+        <script src="scripts/controllers/photoListCtrl.js"></script>
         
         <!-- endbuild -->
 </body>
