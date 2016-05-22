@@ -19,6 +19,7 @@ angular.module('fashionBlogApp')
     
     var getFlickrImages = function(){
             console.info("calling");
+            
             $scope.showImages = false;
            dataFactory.getFlickrImages().then(success, error);
            
