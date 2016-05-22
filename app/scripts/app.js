@@ -17,7 +17,7 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/',{
+      .when('/home',{
         templateUrl:'views/photoList.html',
         controller:'photoListCtrl'
       })
@@ -29,7 +29,11 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/viewImage/:source?', {
+        templateUrl: 'views/viewImage.html',
+        controller: 'viewImageCtrl'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/home'
       });
   });

@@ -4,17 +4,13 @@
 angular.module('fashionBlogApp')
   .controller('photoListCtrl',['$scope', 'dataFactory', function ($scope, dataFactory) {
      // var self = this;
-    var justifyImages = function () {
-        var photoList = $("#photoList");
-        console.log("photoList justifiedGaller", photoList);
-        photoList.justifiedGallery();
-    } 
+     $scope.showImages = false;
     
     var success = function(response)
     {
        console.log("success", response);
        $scope.images = response.hits;
-       //justifyImages();
+       
     };
     var error = function(error)
     {
@@ -23,6 +19,7 @@ angular.module('fashionBlogApp')
     
     var getFlickrImages = function(){
             console.info("calling");
+            $scope.showImages = false;
            dataFactory.getFlickrImages().then(success, error);
            
                        

@@ -11,11 +11,8 @@ angular.module('fashionBlogApp').directive('justified', ['$timeout',function ($t
                             lastRow : 'hide', 
                             rowHeight : 150, 
                             margins : 3
-                        })
-                    // ).on('jg.complete', function () {
-                    //     console.log("swipebox",el);
-                    //     $(el[0]).swipebox();
-                    // });
+                        });
+                        scope.showImages = true;
                  });
                 }
             });
