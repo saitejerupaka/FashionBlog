@@ -14,7 +14,7 @@ module.exports = function(config) {
     // testing framework to use (jasmine/mocha/qunit/...)
     // as well as any additional frameworks (requirejs/chai/sinon/...)
     frameworks: [
-      'jasmine'
+      'mocha', 'chai', 'sinon'
     ],
 
     // list of files / patterns to load in the browser
@@ -31,12 +31,14 @@ module.exports = function(config) {
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
-      'test/mock/**/*.js',
+      
       'test/spec/**/*.js'
     ],
 
     // list of files / patterns to exclude
     exclude: [
+    'test/spec/**/main.js',
+    'test/spec/**/about.js'
     ],
 
     // web server port
@@ -51,13 +53,19 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-      'PhantomJS'
+      'Chrome'
     ],
 
+    reporters: ['mocha','clear-screen'],
     // Which plugins to enable
     plugins: [
       'karma-phantomjs-launcher',
-      'karma-jasmine'
+      'karma-clear-screen-reporter',
+      'karma-mocha',
+      'karma-chai',
+      'karma-sinon',
+      'karma-chrome-launcher',
+      'karma-mocha-reporter'
     ],
 
     // Continuous Integration mode

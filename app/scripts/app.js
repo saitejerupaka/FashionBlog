@@ -19,7 +19,7 @@ angular
     $routeProvider
       .when('/home',{
         templateUrl:'views/photoList.html',
-        controller:'photoListCtrl'
+        controller:'photoListCtrl as controller'
       })
       .when('/editImage', {
         templateUrl: 'views/editImageTags.html',

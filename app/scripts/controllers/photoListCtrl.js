@@ -2,28 +2,24 @@
 
 
 angular.module('fashionBlogApp')
-  .controller('photoListCtrl',['$scope', 'dataFactory', function ($scope, dataFactory) {
-     // var self = this;
-     $scope.showImages = false;
-    
-    var success = function(response)
-    {
-       console.log("success", response);
-       $scope.images = response.hits;
-       
-    };
-    var error = function(error)
-    {
-        console.log(error);
-    };
-    
-    var getFlickrImages = function(){
-            console.info("calling");
-
-            $scope.showImages = false;
-           dataFactory.getFlickrImages().then(success, error);
-           
-                       
-    }
-    getFlickrImages();
+  .controller('photoListCtrl',['dataFactory','$document',
+         function (dataFactory, $document) {
+     var self = this;
+      self.showImages = true; //should test this
+      self.images = [];
+      self.message = '';
+      self.onError = function(error){
+        self.message = error.message;
+      };
+      self.onSuccess = function(data){
+        self.images = data;
+        self.showImages = true;
+      };
+      
+      self.getImages = function(){
+            dataFactory.getImages()
+                       .then(self.onSuccess)
+                       .catch(self.onError);
+      }
+      $document.ready(self.getImages);
   }]);
