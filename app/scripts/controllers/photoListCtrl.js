@@ -12,7 +12,7 @@ angular.module('fashionBlogApp')
         self.message = error.message;
       };
       self.onSuccess = function(data){
-        self.images = data;
+        self.images = data.hits;
         self.showImages = true;
       };
       

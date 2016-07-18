@@ -1,53 +1,41 @@
- 'use strict';
+ //'use strict';
 
     var app = angular.module('fashionBlogApp');
 
-    app.factory('dataFactory', ['$http', '$q', '$window', '$timeout', function($http, $q, $window, $timeout) {
+    app.factory('dataFactory', ['$http', '$q', function($http, $q) {
 
         var self = this,
-            baseUrl = '',
             dataFactory = {};
         var api_key = '2609877-2616e4bfd203b2577b07cd8e6';
         var image_params = {
             'key': api_key,
-            'per_page' : 60,
+            'per_page' : 5,
             'safesearch':true,
             'editors_choice': true
             };
-        dataFactory.getImages = function() {
-            console.log('called dataFactory');
-            return get("https://pixabay.com/api",image_params);
-        }
-        return dataFactory;
 
         /* Helper Funtions */
-        function get(call, params) {
+        dataFactory.get = function(call, params) {
             var deferred = $q.defer();
+            var onSuccess = function(data) {
+                deferred.resolve(data);
+            };
+
+            var onError = function(error) {
+                deferred.reject(error);
+            };
                 
-            $http.get(baseUrl + call, {
+            $http.get(call, {
                     params: params
             }).
-            success(function(data) {
-                deferred.resolve(data.hits);
-            }).
-            error(function(msg) {
-                deferred.reject(msg);
-            });
+            success(onSuccess).
+            error(onError);
             
             return deferred.promise;
-        }
+        };
 
-        function post(call, params) {
-            var deferred = $q.defer();
-                
-            $http.post(baseUrl + call, params).
-            success(function(data) {
-                deferred.resolve(data);
-            }).
-            error(function(msg) {
-                deferred.reject(msg);
-            });
-            
-            return deferred.promise;
+        dataFactory.getImages = function() {
+            return dataFactory.get("https://pixabay.com/api",image_params);
         }
+        return dataFactory;
     }]);

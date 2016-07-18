@@ -47,9 +47,11 @@ describe("photo list controller tests", function(){
   	it('get images should call success when service success', function(){
 
   		var onSuccessSpy = sandbox.spy(controller, 'onSuccess');
-  		
+  		var data = {
+        hits: []
+      };
   		controller.getImages();
-  		deferred.resolve();
+  		deferred.resolve(data);
   		rootScope.$apply();
 
   		expect(onSuccessSpy.calledOnce).to.be.equal(true);
@@ -69,15 +71,19 @@ describe("photo list controller tests", function(){
   	});
 
   	it('onSuccess should set images to data [1, 2, 3, 4]', function(){
-  		var data = [1,2,3,4];
+  		var data = {
+        hits: [1,2,3,4]
+      }
   		controller.onSuccess(data);
-  		expect(controller.images).to.be.deep.equal(data);
+  		expect(controller.images).to.be.deep.equal(data.hits);
   	})
 
   	it('onSuccess should set images to data [1,2,44,5]', function(){
-  		var data = [1,2,44, 5];
+  		var data = {
+        hits:[1,2,44, 5]
+      };
   		controller.onSuccess(data);
-  		expect(controller.images).to.be.deep.equal(data);
+  		expect(controller.images).to.be.deep.equal(data.hits);
   	})
 
   	it('onError should set error message to service error', function(){
